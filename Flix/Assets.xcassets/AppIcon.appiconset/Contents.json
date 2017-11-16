@@ -33,14 +33,19 @@
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "appicon@2x.png",
+      "filename" : "logo_500x500_480.png",
       "scale" : "2x"
     },
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "appicon@3x.png",
+      "filename" : "logo_500x500_480-1.png",
       "scale" : "3x"
+    },
+    {
+      "idiom" : "ios-marketing",
+      "size" : "1024x1024",
+      "scale" : "1x"
     }
   ],
   "info" : {

@@ -40,6 +40,11 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         fetchMovies()
     }
     
+//    override func viewDidAppear(_ animated: Bool) {
+//        searchBar.resignFirstResponder();
+//        //searchBar.text = "";
+//    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -168,16 +173,11 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.reloadData()
     }
     
-    
-    
     /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
+     * Makes keyboard close when "search" button pressed
      */
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar)  {
+        searchBar.resignFirstResponder()
+    }
     
 }
