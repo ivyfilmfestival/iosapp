@@ -24,6 +24,7 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 50
+        tableView.keyboardDismissMode = .onDrag
         
         activityIndicator.startAnimating() //starts the spinny wheel in center of screen
         
@@ -40,10 +41,11 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         fetchMovies()
     }
     
-//    override func viewDidAppear(_ animated: Bool) {
-//        searchBar.resignFirstResponder();
-//        //searchBar.text = "";
-//    }
+    override func viewDidAppear(_ animated: Bool) {
+        if(searchBar.text == ""){
+            searchBar.resignFirstResponder();
+        }
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -88,7 +90,7 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func fetchMovies() {
         // ... Create the URLRequest `myRequest` ...
-        let url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed")!
+        let url = URL(string: "http://ivyfilmfestival.org/api/films.json")!
         let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
         
         // Configure session so that completion handler is executed on main UI thread
@@ -158,7 +160,7 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
      */
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
-        if searchText.isEmpty {
+        if searchText.isEmpty || searchBar.text == nil || searchBar.text == "" {
             filteredMovies = movies
         }
         else {
@@ -179,5 +181,6 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar)  {
         searchBar.resignFirstResponder()
     }
+
     
 }
